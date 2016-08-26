@@ -16,7 +16,7 @@
             _repo = new CustomerRepository(context);
         }
 
-        // GET api/values
+        // GET api/custumers
         [HttpGet]
         public IEnumerable<CustumerIndex> GetIndex()
         {
