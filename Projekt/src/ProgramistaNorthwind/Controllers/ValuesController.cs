@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProgramistaNorthwind.EF;
+using ProgramistaNorthwind.EF.Repository;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ProgramistaNorthwind.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private EmployeeRepository _repository { get; set; }
+        public ValuesController(NorthwindContext context)
+        {
+            _repository = new EmployeeRepository(context);
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
