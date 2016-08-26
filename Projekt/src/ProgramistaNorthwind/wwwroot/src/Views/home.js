@@ -1,5 +1,5 @@
 ﻿export class HomeIndex {
-    constructor() { 
+    constructor () { 
         this.helloMessage = "Hello";
     } 
 }
