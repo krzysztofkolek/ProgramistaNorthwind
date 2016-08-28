@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    [Route("api/[controller]")]
     public class ProductsController : Controller
     {
         private ProductRepository _repo { get; set; }
