@@ -23,7 +23,10 @@
         {
             return _repo.GetAll().Select(item => new ProductIndex()
             {
-                
+                Name = item.ProductName,
+                Category = (item.Category != null) ? item.Category.CategoryName : "",
+                IsInStock = (item.UnitsInStock.HasValue && item.UnitsInStock.Value > 0) ? true : false,
+                UnitPrice = System.Convert.ToDouble(item.UnitPrice),
             });
         }
 

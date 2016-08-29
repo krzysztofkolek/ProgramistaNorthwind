@@ -3,6 +3,11 @@
         .product-instock{
             color: forestgreen;
         }
+        
+
+        .product-outofstock {
+            color: red;
+        }
     </style>
 	
     <h1>Products</h1>
@@ -17,11 +22,11 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>Salt</td>
-	        <td>Ingredients</td>
-	        <td>200 $</td>
-	        <td><i class="fa fa-check-circle product-instock"></i></td>
+	      <tr repeat.for='row of product'>
+            <td>${row.name}</td>
+            <td>${row.category}</td>
+            <td>${row.unitPrice}</td>
+	        <td><i class="fa ${row.isInStock ? 'fa-check-circle product-instock' : 'fa-times-circle product-outofstock'} "></i></td>
 	        <td>
 	        	<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit </a>
 	        </td>
@@ -30,3 +35,4 @@
 	  </table>
 	</div>
 </template>
+

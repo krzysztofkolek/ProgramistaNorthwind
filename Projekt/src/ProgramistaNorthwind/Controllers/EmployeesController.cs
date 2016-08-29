@@ -23,7 +23,9 @@
         {
             return _repo.GetAll().Select(item => new EmployeeIndex()
             {
-               
+                Name = string.Format("{0} {1}", item.FirstName, item.LastName),
+                DateOfhire = (item.HireDate.HasValue) ? item.HireDate.Value.ToString() : "",
+                JobTitle = item.Title
             });
         }
 
