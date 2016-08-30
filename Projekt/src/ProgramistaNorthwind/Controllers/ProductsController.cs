@@ -23,6 +23,7 @@
         {
             return _repo.GetAll().Select(item => new ProductIndex()
             {
+                Id = item.ProductID, 
                 Name = item.ProductName,
                 Category = (item.Category != null) ? item.Category.CategoryName : "",
                 IsInStock = (item.UnitsInStock.HasValue && item.UnitsInStock.Value > 0) ? true : false,

@@ -28,7 +28,7 @@
             <td>${row.unitPrice}</td>
 	        <td><i class="fa ${row.isInStock ? 'fa-check-circle product-instock' : 'fa-times-circle product-outofstock'} "></i></td>
 	        <td>
-	        	<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit </a>
+	        	<a route-href="route:productsdetails; params.bind:{id:row.id}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit </a>
 	        </td>
 	      </tr>
 	    </tbody>

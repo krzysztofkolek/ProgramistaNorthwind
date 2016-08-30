@@ -22,6 +22,7 @@
         {
             return _repo.GetAll().Select(item => new CustumerIndex()
             {
+                Id = item.CustomerID,
                 CompanyName = item.CompanyName,
                 Address = string.Format("{0} {1} {2} {3}", item.Address, item.City, item.PostalCode, item.Country),
                 ContactName = item.ContactName,
