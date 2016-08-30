@@ -1,5 +1,10 @@
+import {inject} from 'aurelia-framework';   
+import {ApiDataDownloader} from "../../Service/ApiDataDownloader";
+
+@inject(ApiDataDownloader)
 export class EmployeesDetails {
-    constructor() {     	
+    constructor(downloader) {
+        this.downloader = downloader;
     } 
 
     activate(params) {

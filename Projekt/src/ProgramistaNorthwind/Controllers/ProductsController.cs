@@ -23,7 +23,7 @@
         {
             return _repo.GetAll().Select(item => new ProductIndex()
             {
-                Id = item.ProductID, 
+                Id = item.ProductID,
                 Name = item.ProductName,
                 Category = (item.Category != null) ? item.Category.CategoryName : "",
                 IsInStock = (item.UnitsInStock.HasValue && item.UnitsInStock.Value > 0) ? true : false,
@@ -35,7 +35,23 @@
         [HttpGet("{id}")]
         public ProductDetails Get(int id)
         {
-            return new ProductDetails();
+            var repoResult = _repo.Get(id);
+
+            if (repoResult == null)
+            {
+                return new ProductDetails();
+            }
+
+            return new ProductDetails()
+            {
+                ProductName = (repoResult.ProductName == null) ? repoResult.ProductName : "",
+                Discontinued = repoResult.Discontinued,
+                QuantityPerUnit = repoResult.QuantityPerUnit,
+                ReorderLevel = (repoResult.ReorderLevel.HasValue) ? repoResult.ReorderLevel.Value : (short)0,
+                UnitPrice = (repoResult.UnitPrice.HasValue) ? repoResult.UnitPrice.Value : (short)0,
+                UnitsInStock = (repoResult.UnitsInStock.HasValue) ? repoResult.UnitsInStock.Value : (short)0,
+                UnitsOnOrder = (repoResult.UnitsOnOrder.HasValue) ? repoResult.UnitsOnOrder.Value : (short)0
+            };
         }
 
         // POST api/product

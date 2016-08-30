@@ -17,7 +17,7 @@ export class ApiDataDownloader {
 
 
     getById(id) {
-        return this.http.get(`${baseUrl}/${id}`)
+        return this.http.get(`${this.url}/${id}`)
                         .then(response => response.content);
     }
 

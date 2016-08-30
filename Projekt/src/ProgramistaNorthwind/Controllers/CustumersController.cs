@@ -33,16 +33,35 @@
 
         // GET api/custumers/5
         [HttpGet("{id}")]
-        public CustumerDetail Get(int id)
+        public CustumerDetail Get(string id)
         {
-            return new CustumerDetail();
+            var repoResult = _repo.Get(id);
+
+            if (repoResult == null)
+            {
+                return new CustumerDetail();
+            }
+
+            return new CustumerDetail()
+            {
+                Address = repoResult.Address,
+                City = repoResult.City,
+                CompanyName = repoResult.CompanyName,
+                ContactName = repoResult.ContactName,
+                ContactTitle = repoResult.ContactTitle,
+                Country = repoResult.Country,
+                Fax = repoResult.Fax,
+                Phone = repoResult.Phone,
+                PostalCode = repoResult.PostalCode,
+                Region = (repoResult.Region == null)? "" : repoResult.Region
+            };
         }
 
         // POST api/custumers
         [HttpPost]
         public void Post([FromBody]CustumerDetail value)
         {
-
+            
         }
 
         // PUT api/custumers/

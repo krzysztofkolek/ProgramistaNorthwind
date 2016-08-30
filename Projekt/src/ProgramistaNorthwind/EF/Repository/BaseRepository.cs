@@ -33,10 +33,18 @@
             return await Context.Set<T>().ToListAsync();
         }
 
-        //public T Get(int id)
-        //{
-        //    return Context.Set<T>().Find(id);
-        //}
+        public T Get(dynamic id)
+        {
+            string idString = id.ToString();
+            return Context.Set<T>()
+                          .Where(item => GetPredicate(item, idString))
+                          .FirstOrDefault();
+        }
+
+        public virtual bool GetPredicate(T item, string id)
+        {
+            return false;
+        }
 
         //public async Task<T> GetAsync(int id)
         //{
